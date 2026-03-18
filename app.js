@@ -1,5 +1,6 @@
 const express = require("express");
 const Database = require("better-sqlite3");
+const path = require('path');
 
 const app = express();
 
@@ -7,20 +8,14 @@ app.use(express.json());
 
 const db = new Database("app.db");
 
-// Datenbank erstellen.
-
-app.post("/start", (req, res) => {
-  db.prepare(`
-    CREATE TABLE nachrichten (
-      id INTEGER PRIMARY KEY,
-      empfaenger TEXT,
-      text TEXT,
-      zeitpunkt TEXT
-    )
-  `).run();
-
-  res.json({ status: "OK" });
-});
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS nachrichten (
+    id INTEGER PRIMARY KEY,
+    empfaenger TEXT,
+    text TEXT,
+    zeitpunkt TEXT
+  )
+`).run();
 
 // Alle Nachrichten anzeigen.
 
@@ -70,6 +65,12 @@ app.delete("/nachrichten/:id", (req, res) => {
   `).run(req.params.id);
 
   res.json({ status: "OK" });
+});
+
+// Testseite anzeigen.
+
+app.get("/test", (req, res) => {
+  res.sendFile(path.join(__dirname, "test.html"));
 });
 
 app.listen(8081);

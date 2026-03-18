@@ -15,13 +15,6 @@ $ node app.js
 
 # Anwendungsbeispiele
 
-## Datenbank erstellen
-
-```
-$ curl -X POST http://localhost:8081/start
-{"status":"OK"}
-```
-
 ## Alle Nachrichten anzeigen.
 
 ```
@@ -56,5 +49,12 @@ $ curl -X POST http://localhost:8081/nachrichten\
     "text": "Frohes neues Jahr!",
     "zeitpunkt": "2027-01-01T00:00"
   }'
+{"status":"OK"}
+```
+
+## Eine Nachricht löschen.
+
+```
+$ curl -X POST http://localhost:8081/nachrichten/1
 {"status":"OK"}
 ```

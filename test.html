@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <title>Future Message</title>
+  </head>
+  <body>
+    <h1>Alle Nachrichten anzeigen</h1>
+
+    <form action="javascript:alle_nachrichten_anzeigen()">
+      <input type="submit">
+    </form>
+
+    <script>
+      function alle_nachrichten_anzeigen() {
+        fetch("http://localhost:8081/nachrichten", {
+          method: "GET"
+        })
+        .then(antwort => antwort.text())
+        .then(text => alert(text))
+        .catch(fehler => alert(fehler));
+      }
+    </script>
+
+    <h1>Pendente Nachrichten anzeigen</h1>
+
+    <form action="javascript:pendente_nachrichten_anzeigen()">
+      <input type="submit">
+    </form>
+
+    <script>
+      function pendente_nachrichten_anzeigen() {
+        fetch("http://localhost:8081/nachrichten/pendent", {
+          method: "GET"
+        })
+        .then(antwort => antwort.text())
+        .then(text => alert(text))
+        .catch(fehler => alert(fehler));
+      }
+    </script>
+
+    <h1>Eine Nachricht erstellen</h1>
+
+    <form action="javascript:eine_nachricht_erstellen()">
+      <textarea id="eine_nachricht_erstellen_eingabe" cols=40 rows=10>
+{
+  "empfaenger": "+4179xxxxxxx",
+  "text": "Frohes neues Jahr!",
+  "zeitpunkt": "2027-01-01T00:00"
+}
+      </textarea>
+      <input type="submit">
+    </form>
+
+    <script>
+      function eine_nachricht_erstellen() {
+        const eingabe = document.getElementById("eine_nachricht_erstellen_eingabe");
+
+        fetch("http://localhost:8081/nachrichten", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: eingabe.value
+        })
+        .then(antwort => antwort.text())
+        .then(text => alert(text))
+        .catch(fehler => alert(fehler));
+      }
+    </script>
+
+    <h1>Eine Nachricht löschen</h1>
+
+    <form action="javascript:eine_nachricht_loeschen()">
+      <input id="eine_nachricht_loeschen_eingabe" value="1">
+      <input type="submit">
+    </form>
+
+    <script>
+      function eine_nachricht_loeschen() {
+        const eingabe = document.getElementById("eine_nachricht_loeschen_eingabe");
+
+        fetch("http://localhost:8081/nachrichten/" + eingabe.value, {
+          method: "DELETE"
+        })
+        .then(antwort => antwort.text())
+        .then(text => alert(text))
+        .catch(fehler => alert(fehler));
+      }
+    </script>
+  </body>
+</html>
