@@ -4,10 +4,10 @@
     "better-sqlite3": "^12.8.0",
     "express": "^5.2.1"
   },
-  "description": "Installation",
+  "description": "FutureMessage Datenbank",
   "keywords": [],
   "license": "ISC",
-  "main": "index.js",
+  "main": "app.js",
   "name": "fm-database",
   "type": "commonjs",
   "version": "1.0.0"
