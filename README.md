@@ -3,14 +3,13 @@
 # Dienst aufsetzen
 
 ```
-$ npm init -y
-$ npm install better-sqlite3 express
+$ npm install
 ```
 
 # Dienst starten
 
 ```
-$ node app.js
+$ npm run dev
 ```
 
 # Anwendungsbeispiele

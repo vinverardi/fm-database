@@ -5,10 +5,16 @@
     "express": "^5.2.1"
   },
   "description": "FutureMessage Datenbank",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
   "keywords": [],
   "license": "ISC",
   "main": "app.js",
   "name": "fm-database",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
   "type": "commonjs",
   "version": "1.0.0"
 }
