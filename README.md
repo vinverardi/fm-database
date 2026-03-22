@@ -18,7 +18,7 @@ $ node app.js
 ## Alle Nachrichten anzeigen.
 
 ```
-$ curl http://localhost:8081/nachrichten
+$ curl http://localhost:7071/nachrichten
 [{
   "id": 1,
   "empfaenger": "+4179xxxxxxxx",
@@ -30,7 +30,7 @@ $ curl http://localhost:8081/nachrichten
 ## Pendente Nachrichten anzeigen.
 
 ```
-$ curl http://localhost:8081/nachrichten
+$ curl http://localhost:7071/nachrichten
 [{
   "id": 1,
   "empfaenger": "+4179xxxxxxxx",
@@ -42,7 +42,7 @@ $ curl http://localhost:8081/nachrichten
 ## Eine Nachricht erstellen.
 
 ```
-$ curl -X POST http://localhost:8081/nachrichten\
+$ curl -X POST http://localhost:7071/nachrichten\
   -H "Content-Type: application/json"\
   -d '{
     "empfaenger": "+4179xxxxxxxx",
@@ -55,6 +55,6 @@ $ curl -X POST http://localhost:8081/nachrichten\
 ## Eine Nachricht löschen.
 
 ```
-$ curl -X POST http://localhost:8081/nachrichten/1
+$ curl -X POST http://localhost:7071/nachrichten/1
 {"status":"OK"}
 ```
