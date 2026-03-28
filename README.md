@@ -1,20 +1,8 @@
 % FutureMessage Datenbank
 
-# Dienst aufsetzen
+# Anwendung
 
-```
-$ npm install
-```
-
-# Dienst starten
-
-```
-$ npm run dev
-```
-
-# Anwendungsbeispiele
-
-## Alle Nachrichten anzeigen.
+Alle Nachrichten anzeigen:
 
 ```
 $ curl http://localhost:7071/nachrichten
@@ -26,7 +14,7 @@ $ curl http://localhost:7071/nachrichten
 }]
 ```
 
-## Pendente Nachrichten anzeigen.
+Pendente Nachrichten anzeigen:
 
 ```
 $ curl http://localhost:7071/nachrichten
@@ -38,7 +26,7 @@ $ curl http://localhost:7071/nachrichten
 }]
 ```
 
-## Eine Nachricht erstellen.
+Eine Nachricht erstellen:
 
 ```
 $ curl -X POST http://localhost:7071/nachrichten\
@@ -51,9 +39,72 @@ $ curl -X POST http://localhost:7071/nachrichten\
 {"status":"OK"}
 ```
 
-## Eine Nachricht löschen.
+Eine Nachricht löschen:
 
 ```
 $ curl -X POST http://localhost:7071/nachrichten/1
 {"status":"OK"}
+```
+
+# Entwicklung
+
+App installieren:
+
+```
+$ npm install
+```
+
+App starten:
+
+```
+$ npm run dev
+```
+
+# Live-Betrieb
+
+Pakete installieren:
+
+```
+# curl -fsSL https://deb.nodesource.com/setup_25.x | bash -
+# apt-get install -y caddy docker.io npm
+```
+
+App installieren:
+
+```
+# cd
+# git clone git@github.com:vinverardi/fm-database.git
+# cd fm-database
+# npm i
+```
+
+App als Hintergrunddienst hinzufügen:
+
+```
+# cat > /etc/systemd/system/fm-database.service
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node app.js
+Restart=on-failure
+RestartSec=5
+Type=simple
+User=root
+WorkingDirectory=/root/fm-database
+
+[Unit]
+After=network.target
+Description=FutureMessage Datenbank
+^D
+
+# systemctl daemon-reload
+# systemctl enable fm-database
+```
+
+App als Hintergrunddienst starten:
+
+```
+# systemctl start fm-database
 ```
