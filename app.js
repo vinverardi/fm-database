@@ -73,4 +73,4 @@ app.get("/test", (req, res) => {
   res.sendFile(path.join(__dirname, "test.html"));
 });
 
-app.listen(7071);
+app.listen(7071, "localhost");
