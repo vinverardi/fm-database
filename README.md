@@ -51,12 +51,14 @@ $ curl -X POST http://localhost:7071/nachrichten/1
 App installieren:
 
 ```
+$ cd src
 $ npm install
 ```
 
 App starten:
 
 ```
+$ cd src
 $ npm run dev
 ```
 
@@ -74,7 +76,7 @@ App installieren:
 ```
 # cd
 # git clone git@github.com:vinverardi/fm-database.git
-# cd fm-database
+# cd fm-database/src
 # npm i
 ```
 
@@ -92,7 +94,7 @@ Restart=on-failure
 RestartSec=5
 Type=simple
 User=root
-WorkingDirectory=/root/fm-database
+WorkingDirectory=/root/fm-database/src
 
 [Unit]
 After=network.target
