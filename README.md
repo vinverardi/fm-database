@@ -51,14 +51,14 @@ $ curl -X POST http://localhost:7071/nachrichten/1
 App installieren:
 
 ```
-$ cd src
+$ cd ~/fm-database/src
 $ npm install
 ```
 
 App starten:
 
 ```
-$ cd src
+$ cd ~/fm-database/src
 $ npm run dev
 ```
 
@@ -76,7 +76,8 @@ App installieren:
 ```
 # cd
 # git clone git@github.com:vinverardi/fm-database.git
-# cd fm-database/src
+
+# cd ~/fm-database/src
 # npm i
 ```
 
